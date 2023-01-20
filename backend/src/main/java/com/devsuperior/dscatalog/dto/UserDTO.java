@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.devsuperior.dscatalog.entities.User;
+import com.devsuperior.dscatalog.services.validation.UserUpdateValid;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
