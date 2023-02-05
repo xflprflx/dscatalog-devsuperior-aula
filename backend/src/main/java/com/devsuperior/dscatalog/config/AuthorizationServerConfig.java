@@ -45,7 +45,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	
 	@Autowired
 	private JwtTokenEnhancer tokenEnhancer;
-	
+
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
 		security.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
@@ -63,13 +63,12 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-		
+
 		TokenEnhancerChain chain = new TokenEnhancerChain();
 		chain.setTokenEnhancers(Arrays.asList(accessTokenConverter, tokenEnhancer));
 		
 		endpoints.authenticationManager(authenticationManager)
 		.tokenStore(tokenStore)
-		.accessTokenConverter(accessTokenConverter)
-		.tokenEnhancer(chain);
+		.accessTokenConverter(accessTokenConverter);
 	}
 }
